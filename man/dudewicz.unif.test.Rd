@@ -1,31 +1,31 @@
-\name{frosini.unif.test}
-\alias{frosini.unif.test}
-\title{Frosini test for uniformity}
+\name{dudewicz.unif.test}
+\alias{dudewicz.unif.test}
+\title{Dudewicz-van der Meulen test for uniformity}
 \description{
-  Performs Frosini test for the hypothesis of uniformity, 
-  see Frosini (1987).
+  Performs Dudewicz-van der Meulen test for the hypothesis of uniformity.
 }
 \usage{
-frosini.unif.test(x, nrepl=2000)
+dudewicz.unif.test(x, nrepl=2000,m=length(x)/2)
 }
 \arguments{
   \item{x}{a numeric vector of data values.} %Missing values are allowed.
   \item{nrepl}{the number of replications in Monte Carlo simulation.}
+  \item{m}{a parameter of the test (see below).}
 }
-\details{The Frosini test for uniformity is based on the following statistic:
+\details{The Dudewicz-van der Meulen test for uniformity is based on the following statistic:
 \deqn{
-B_n = \frac{1}{\sqrt{n}}\sum_{i=1}^n{\left| X_{(i)} - \frac{i-0.5}{n} \right|}.
+H(m, n) = -\frac{1}{n}\sum_{i=1}^{n}{\log_2{\frac{n}{2m}(x_{(i+m)}-x_{(i-m)})}}
 }
 The p-value is computed by Monte Carlo simulation.
 }
 \value{
   A list with class "htest" containing the following components: 
-  \item{statistic}{the value of the Frosini statistic.}
+  \item{statistic}{the value of the Dudewicz-van der Meulen statistic.}
   \item{p.value }{the p-value for the test.}
-  \item{method}{the character string "Frosini test for uniformity".}
+  \item{method}{the character string "Dudewicz-van der Meulen test for uniformity".}
   \item{data.name}{a character string giving the name(s) of the data.} 
 }
-\references{Frosini, B.V. (1987): On the distribution and power of a goodness-of-fit statistic with parametric and nonparametric applications, "Goodness-of-fit". (Ed. by Revesz P., Sarkadi K., Sen P.K.) --- Amsterdam-Oxford-New York: North-Holland. --- Pp. 133--154.
+\references{Dudewicz E. J., van der Meulen E. C. (1981): Entropy-based tests of uniformity. --- JASA, vol. 76, pp. 967--974.
 }
 
 \author{Maxim Melnik and Ruslan Pusev}
@@ -36,7 +36,7 @@ The p-value is computed by Monte Carlo simulation.
 %\code{\link{qqnorm}} for producing a normal quantile-quantile plot.}
 
 \examples{
-frosini.unif.test(runif(100,0,1))
-frosini.unif.test(runif(100,0.1,0.9))
+dudewicz.unif.test(runif(100,0,1))
+dudewicz.unif.test(runif(100,0.1,0.9))
 }
 \keyword{htest}

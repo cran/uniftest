@@ -1,31 +1,30 @@
-\name{frosini.unif.test}
-\alias{frosini.unif.test}
-\title{Frosini test for uniformity}
+\name{sarkadi.unif.test}
+\alias{sarkadi.unif.test}
+\title{Sarkadi-Kosik test for uniformity}
 \description{
-  Performs Frosini test for the hypothesis of uniformity, 
-  see Frosini (1987).
+  Performs Sarkadi-Kosik test for the hypothesis of uniformity.
 }
 \usage{
-frosini.unif.test(x, nrepl=2000)
+sarkadi.unif.test(x, nrepl=2000)
 }
 \arguments{
   \item{x}{a numeric vector of data values.} %Missing values are allowed.
   \item{nrepl}{the number of replications in Monte Carlo simulation.}
 }
-\details{The Frosini test for uniformity is based on the following statistic:
+\details{The Sarkadi-Kosik test for uniformity is based on the following statistic:
 \deqn{
-B_n = \frac{1}{\sqrt{n}}\sum_{i=1}^n{\left| X_{(i)} - \frac{i-0.5}{n} \right|}.
+J = n^2\sum_{i=1}^{n}{\left( \frac{x_i-\frac{i}{n+1}}{i\left(n-i+1\right)} \right)^2}-n\left(\sum_{i=1}^{n}{\frac{x_i-\frac{i}{n+1}}{i\left(n-i+1\right)}} \right)^2.
 }
 The p-value is computed by Monte Carlo simulation.
 }
 \value{
   A list with class "htest" containing the following components: 
-  \item{statistic}{the value of the Frosini statistic.}
+  \item{statistic}{the value of the Sarkadi-Kosik statistic.}
   \item{p.value }{the p-value for the test.}
-  \item{method}{the character string "Frosini test for uniformity".}
+  \item{method}{the character string "Sarkadi-Kosik test for uniformity".}
   \item{data.name}{a character string giving the name(s) of the data.} 
 }
-\references{Frosini, B.V. (1987): On the distribution and power of a goodness-of-fit statistic with parametric and nonparametric applications, "Goodness-of-fit". (Ed. by Revesz P., Sarkadi K., Sen P.K.) --- Amsterdam-Oxford-New York: North-Holland. --- Pp. 133--154.
+\references{Kosik P., Sarkadi K. A new goodness-of-fit test // Proc. of 5-th Pannonian Symp. of Math. Stat., Visegrad, Hungary, 20 24 May, 1985. P. 267 272.
 }
 
 \author{Maxim Melnik and Ruslan Pusev}
@@ -36,7 +35,7 @@ The p-value is computed by Monte Carlo simulation.
 %\code{\link{qqnorm}} for producing a normal quantile-quantile plot.}
 
 \examples{
-frosini.unif.test(runif(100,0,1))
-frosini.unif.test(runif(100,0.1,0.9))
+sarkadi.unif.test(runif(100,0,1))
+sarkadi.unif.test(runif(100,0.1,0.9))
 }
 \keyword{htest}
